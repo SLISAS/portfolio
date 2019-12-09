@@ -51,6 +51,8 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'sqlite3'
+  gem 'ruby-debug-ide'
+  gem 'debase'
 
 end
 
@@ -62,6 +64,9 @@ group :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '>= 2.15'
   gem 'webdrivers'
+  gem 'factory_bot_rails'
+  gem 'database_cleaner'
+  gem 'faker'
 end
 
 group :production do

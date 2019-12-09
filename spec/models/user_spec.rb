@@ -1,6 +1,10 @@
 require "rails_helper"
 
 RSpec.describe User, type: :model do
+  before do
+    user = create(:user)
+  end
+
   describe "User" do
     it "should be valid" do
       expect(user).to be_valid
@@ -9,7 +13,7 @@ RSpec.describe User, type: :model do
 
   describe "name" do
     it "gives presence" do
-      user.name = ""
+      user.name = ""@
       expect(user).to be_invalid
     end
   end
@@ -23,12 +27,12 @@ RSpec.describe User, type: :model do
 
   describe "column having unique-key constraint" do
     describe "when email address is already taken" do
-      before { @user.save! }
+      before { user.save! }
 
       it "should raise error ActiveRecord::RecordNotUnique" do
         expect do
-          user_with_same_email = @user.dup
-          user_with_same_email.email = @user.email
+          user_with_same_email = user.dup
+          user_with_same_email.email = user.email
           user_with_same_email.save!
         end.to raise_error(ActiveRecord::RecordNotUnique)
       end
