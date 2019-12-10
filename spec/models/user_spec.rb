@@ -13,7 +13,7 @@ RSpec.describe User, type: :model do
 
   describe "name" do
     it "gives presence" do
-      user.name = ""@
+      user.name = ""
       expect(user).to be_invalid
     end
   end
