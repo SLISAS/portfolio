@@ -5,12 +5,19 @@
       <div class="form-logo-img">
       </div>
       <h1 class="form-title">Log in</h1>
-      <%= form_with(scope: :session, url:login_path, local: true) do |form| %>
+      <%=form_with(scope: :session, url:login_path, local:true) do |f| %>
         <div class="form-group">
-          <%= form.email_field :email, class: 'form-control', placeholder:"email" %>
+          <%= f.email_field :email, class: 'form-control', placeholder:"email" %>
         </div>
         <div class="form-group">
-          <%= form.submit "login", class: "btn btn-info btn-lg form-submit"%>
+          <%= f.password_field :password, class: 'form-control', placeholder:"password" %>
+        </div>
+        <div class="form-group form-check">
+          <%= f.check_box  :remember_me, class: 'form-check-input'%>
+          <%= f.label :remember_me, 'Remember me', class: 'form-check-label'%>
+        </div>
+        <div class="form-group">
+          <%= f.submit "login", class: "btn btn-info btn-lg form-submit"%>
         </div>
       <% end %>
       <p class="form-go-to-signup-or-login">

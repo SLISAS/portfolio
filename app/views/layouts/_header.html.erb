@@ -21,20 +21,25 @@
               <a class="nav-link" href="#">Users<span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Features</a>
+              <%# <a class="nav-link">
+                <%= link_to show_path do %>
+                Profile
+                <%# <% end %>
+              </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Profile</a>
+              <a class="nav-link">
+                <%= link_to logout_path, method: :delete do %>
+                  Logout
+                <% end %>
+              </a>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Settings
-              </a>
-              <div class="dropdown-menu bg-dark" aria-labelledby="navbarDropdownMenuLink">
-                <a class="dropdown-item" href="#">Action</a>
+                <a class="dropdown-item" href="#">Edit profile</a>
                 <a class="dropdown-item" href="#">Another action</a>
-                <a class="dropdown-item" href="#">Something else here</a>
-              </div>
+              </a>
             </li>
           </ul>
         </div>
