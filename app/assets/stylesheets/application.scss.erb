@@ -32,7 +32,6 @@
   --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas,
     "Liberation Mono", "Courier New", monospace;
 }
-
 * {
   text-decoration: none !important;
 }
@@ -45,12 +44,16 @@ body {
 }
 //   header
 .dropdown {
+  position: relative;
   background-color: #343a40;
   .dropdown-item {
     color: var(--light);
   }
 }
 
+.nav-item {
+  color: var(--light);
+}
 // jumbotron
 .jumbotron-extend {
   margin-top: 4.2rem;
@@ -164,12 +167,13 @@ body {
   margin: auto;
   padding-top: 2rem !important;
 }
-
 .form-submit {
   width: 100%;
 }
-
 // forms
+.form-title {
+  color: var(--light) !important;
+}
 #error_explanation {
   color: var(--warning);
   ul {
@@ -201,4 +205,14 @@ body {
   .nav-item-extend {
     margin-top: 0.6rem;
   }
+}
+// edit
+.card-body {
+  background-color: var(--gray);
+}
+.card-title {
+  text-align: center !important;
+}
+.form-group-reset_time {
+  margin-left: 20px;
 }

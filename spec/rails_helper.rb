@@ -8,6 +8,7 @@ require File.expand_path("../config/environment", __dir__)
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 require "rspec/rails"
 require "factory_bot"
+require "capybara/rspec"
 # Add additional requires below this line. Rails is not loaded until this point!
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
@@ -34,7 +35,6 @@ rescue ActiveRecord::PendingMigrationError => e
   exit 1
 end
 RSpec.configure do |config|
-  config.include ApplicationHelpers
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
 
   # If you're not using ActiveRecord, or you'd prefer not to run each of your

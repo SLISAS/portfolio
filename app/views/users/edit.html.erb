@@ -1,0 +1,48 @@
+<%= provide(:title, 'edit profile') %>
+<div class="container edit-container">
+  <div class="edit-title">
+    <h1 class="form-title form-title-edit">Edit your profile</h1>
+  </div>
+  <%= form_with(model: @user, url: user_path(@user), local: true) do |f| %>
+    <div class="card-deck">
+      <div class="col-md-6">
+        <section class="card">
+          <div class="card-body">
+            <div class="card-title">
+              <h4>Change your profile</h4>
+            </div>
+            <%= render 'shared/error_messages' %>
+            <div class="form-group">
+              <%= f.text_field :name, class: 'form-control', placeholder: "name"%>
+            </div>
+            <div class="form-group">
+              <%= f.email_field :email, class: 'form-control', placeholder: "email"%>
+            </div>
+            <div class="form-group">
+              <%= f.password_field :password, class: 'form-control', placeholder: "password"%>
+            </div>
+            <div class="form-group">
+              <%= f.submit 'save', class: 'btn btn-info btn-lg form-submit'%>
+            </div>
+          </div>
+        </section>
+      </div>
+      <div class="col-md-6">
+        <section class="card">
+          <div class="card-body">
+            <div class="card-title">
+              <h4>Reset your recording</h4>
+            </div>
+            <div class="form-group form-group-reset_time">
+              <%= f.check_box :reset_time, class: 'form-check-input'%>
+              <%= f.label :reset_time, "Are you sure?", class: "form-check-label"%>
+            </div>
+            <div class="form-group">
+              <%= f.submit 'change', class: 'btn btn-info btn-lg form-submit'%>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  <% end %>
+</div>

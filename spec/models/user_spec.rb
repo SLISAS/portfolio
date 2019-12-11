@@ -1,9 +1,7 @@
 require "rails_helper"
 
 RSpec.describe User, type: :model do
-  before do
-    user = create(:user)
-  end
+  let(:user) { FactoryBot.create(:user) }
 
   describe "User" do
     it "should be valid" do
@@ -47,7 +45,7 @@ RSpec.describe User, type: :model do
 
     context "when 254 char" do
       it "is acceptable" do
-        user.email = "a" * 254 + "@example.com"
+        user.email = "a" * 243 + "@example.com"
         expect(user).to be_valid
       end
     end
@@ -96,6 +94,36 @@ RSpec.describe User, type: :model do
       it "is acceptable (more then 6 chars)" do
         user.password = user.password_confirmation = "a" * 6
         expect(user).to be_valid
+      end
+    end
+  end
+
+  describe "GET #show" do
+    context "when login as authenticated user" do
+      it "responds successfully" do
+        sign_in_as user
+        get user_path(user)
+        expect(response).to be_success
+        expect(response).to have_http_status "200"
+      end
+    end
+
+    context "when as a guest" do
+      it "redirects to login page" do
+        get user_path(user)
+        expect(response).to redirect_to login_path
+      end
+    end
+
+    context "as other user" do
+      before do
+        @other_user = FactoryBot.create(:user)
+      end
+
+      it "redirects to the login page" do
+        sign_in_as @other_user
+        get user_path(user)
+        expect(response).to redirext_to root_path
       end
     end
   end
