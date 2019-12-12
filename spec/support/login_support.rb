@@ -7,7 +7,3 @@ module LoginSupport
     click_button "login"
   end
 end
-
-RSpec.configure do |config|
-  config.include LoginSupport
-end
