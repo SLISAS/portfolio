@@ -22,7 +22,10 @@
       <% end %>
       <p class="form-go-to-signup-or-login">
         New user?
-        <%= link_to 'here', signup_path %>
+        <%= link_to 'here', signup_path %></p>
+      <p><%= link_to new_password_reset_path  do%>
+          Forgot your password?
+        <% end %>
       </p>
     </div>
   </div>

@@ -1,0 +1,22 @@
+<% provide(:title, "Forgot password")%>
+<div class="container form-container login-container">
+  <div class="row">
+    <div class="col">
+      <div class="form-logo-img">
+      </div>
+      <h1 class="form-title">Forgot password</h1>
+      <%=form_with(scope: :password_reset, url:password_resets_path, local:true) do |f| %>
+        <div class="form-group">
+          <%= f.email_field :email, class: 'form-control', placeholder:"email" %>
+        </div>
+        <div class="form-group">
+          <%= f.submit "submit", class: "btn btn-info btn-lg form-submit"%>
+        </div>
+      <% end %>
+      <p class="form-go-to-signup-or-login">
+        New user?
+        <%= link_to 'here', signup_path %>
+      </p>
+    </div>
+  </div>
+</div>

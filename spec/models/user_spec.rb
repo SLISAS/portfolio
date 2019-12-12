@@ -23,20 +23,6 @@ RSpec.describe User, type: :model do
     end
   end
 
-  describe "column having unique-key constraint" do
-    describe "when email address is already taken" do
-      before { user.save! }
-
-      it "should raise error ActiveRecord::RecordNotUnique" do
-        expect do
-          user_with_same_email = user.dup
-          user_with_same_email.email = user.email
-          user_with_same_email.save!
-        end.to raise_error(ActiveRecord::RecordNotUnique)
-      end
-    end
-  end
-
   describe "email" do
     it "gives presence" do
       user.email = ""
@@ -91,7 +77,7 @@ RSpec.describe User, type: :model do
     end
 
     context "when password is valid" do
-      it "is acceptable (more then 6 chars)" do
+      it "is acceptable (more than 6 chars)" do
         user.password = user.password_confirmation = "a" * 6
         expect(user).to be_valid
       end
@@ -101,7 +87,7 @@ RSpec.describe User, type: :model do
   describe "GET #show" do
     context "when login as authenticated user" do
       it "responds successfully" do
-        sign_in_as user
+        log_in_as user
         get user_path(user)
         expect(response).to be_success
         expect(response).to have_http_status "200"
@@ -121,7 +107,7 @@ RSpec.describe User, type: :model do
       end
 
       it "redirects to the login page" do
-        sign_in_as @other_user
+        log_in_as @other_user
         get user_path(user)
         expect(response).to redirext_to root_path
       end
