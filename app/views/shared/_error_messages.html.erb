@@ -1,7 +1,7 @@
 <% if @user.errors.any? %>
   <script type= "text/javascript">
     <% @user.errors.full_messages.each do |msg| %>
-      toastr.warning('<%= msg %>');
+    toastr.warning('<%= msg %>');
     <% end %>
   </script>
 <% end %>
