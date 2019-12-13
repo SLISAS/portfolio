@@ -9,10 +9,18 @@
   </head>
   <body>
     <%= render 'layouts/header' %>
-    <% flash.each do |message_type, message| %>
-      <%= tag.div message, class: "alert alert-#{message_type}"%>
-    <% end %>
     <%= yield %>
     <%= render 'layouts/footer' %>
+    <% if flash.any? %>
+      <script type= "text/javascript">
+        <% flash.each do |message_type, message| %>
+        <% key = "success" if key == "success" %>
+        <% key = "warning" if key == "danger" %>
+        <% key = "error" if key == "alert" %>
+         toastr['<%= message_type %>']('<%= message %>');
+        
+            <% end %>
+      </script>
+    <% end %>
   </body>
 </html>

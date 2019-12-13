@@ -1,0 +1,27 @@
+<h1 class="log-title col-2">Logs</h1>
+<% if @user.microposts.any? %>
+  <div class="container">
+    <ol class="microposts">
+      <% @microposts.each do |micropost| %>
+        <li id= "micropost-<%= micropost.id %>%">
+          <span class="row log-list">
+            <span class="col-2 log-timestamp d-none d-md-inline-block log-timestamp-block">
+              <span class="log-timestamp">
+                <%= time_ago_in_words(mictopost.created_at) %>
+              </span>
+              <span class="col-md-10 col-log-contents">
+                <div class="log-time-and-edit">
+                  <div class="row">
+                    <span class="log-time col-3">
+                      <%= micropost.time%>min
+                    </span>
+                    <span class="col-7 "></span>
+                  </div>
+                </div>
+              </span>
+            </span>
+          </span>
+        <% end %>
+      </ol>
+    </div>
+  <% end %>

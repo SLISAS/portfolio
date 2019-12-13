@@ -23,6 +23,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+
     redirect_to root_url and return unless @user.activated?
   end
 
@@ -37,16 +38,6 @@ class UsersController < ApplicationController
       redirect_to @user
     else
       render "edit"
-    end
-  end
-
-  # ログイン済みユーザーかどうか確認
-  def logged_in_user
-    # 　ログインしていなければ
-    unless logged_in?
-      store_location
-      flash[:danger] = "Please log in."
-      redirect_to login_url
     end
   end
 

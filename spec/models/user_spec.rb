@@ -83,34 +83,35 @@ RSpec.describe User, type: :model do
       end
     end
   end
-
-  describe "GET #show" do
-    context "when login as authenticated user" do
-      it "responds successfully" do
-        log_in_as user
-        get user_path(user)
-        expect(response).to be_success
-        expect(response).to have_http_status "200"
-      end
-    end
-
-    context "when as a guest" do
-      it "redirects to login page" do
-        get user_path(user)
-        expect(response).to redirect_to login_path
-      end
-    end
-
-    context "as other user" do
-      before do
-        @other_user = FactoryBot.create(:user)
-      end
-
-      it "redirects to the login page" do
-        log_in_as @other_user
-        get user_path(user)
-        expect(response).to redirext_to root_path
-      end
-    end
-  end
 end
+
+# describe "GET #show" do
+#   context "when login as authenticated user" do
+#     it "responds successfully" do
+#       log_in_as user
+#       get user_path(user)
+#       expect(response).to be_success
+#       expect(response).to have_http_status "200"
+#     end
+#   end
+
+#   context "when as a guest" do
+#     it "redirects to login page" do
+#       get user_path(user)
+#       expect(response).to redirect_to login_path
+#     end
+#   end
+
+#   context "as other user" do
+#     before do
+#       @other_user = FactoryBot.create(:user)
+#     end
+
+#     it "redirects to the login page" do
+#       log_in_as @other_user
+#       get user_path(user)
+#       expect(response).to redirext_to root_path
+#     end
+#   end
+# end
+# end

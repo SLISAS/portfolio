@@ -17,7 +17,7 @@ RSpec.feature "Logins", type: :feature do
 
   scenario "user doesnt login with invalid information" do
     visit root_path
-    visit login_path
+    visit "/sessions/new"
     fill_in "email", with: ""
     fill_in "password", with: ""
     click_button "login"
@@ -25,5 +25,15 @@ RSpec.feature "Logins", type: :feature do
     expect(current_path).to eq login_path
     # expect(page).to have_content "Login"
     # expect(page).to have_content "Invalid combination"
+  end
+
+  scenario "user successfully login" do
+    valid_login(user)
+
+    expect(current_path).to eq user_path(user)
+
+    click_link "Log out"
+
+    expect(current_path).to eq root_path
   end
 end
